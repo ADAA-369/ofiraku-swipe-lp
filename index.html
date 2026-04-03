@@ -197,14 +197,11 @@ small{font-size:.72rem;line-height:1.6}
   gap:10px;
 }
 .qa-q .q-label{color:var(--accent);font-weight:900;flex-shrink:0}
-.qa-q .toggle{font-size:1rem;color:var(--accent);transition:transform .3s;flex-shrink:0}
-.qa-q.open .toggle{transform:rotate(45deg)}
+.qa-q .toggle{display:none}
 .qa-a{
-  max-height:0;overflow:hidden;transition:max-height .3s;
   font-size:.73rem;line-height:1.7;color:rgba(255,255,255,.7);
-  padding:0 0 0 26px;
+  padding:0 0 10px 26px;
 }
-.qa-a.open{max-height:300px;padding-bottom:10px}
 
 /* Offer badge */
 .badge{
@@ -511,23 +508,23 @@ small{font-size:.72rem;line-height:1.6}
         <h2 class="fade-in" style="font-size:1.1rem;text-align:center;margin-bottom:12px">よくあるご質問</h2>
         <div class="fade-in">
           <div class="qa-item">
-            <div class="qa-q" onclick="toggleQA(this)"><span><span class="q-label">Q1.</span> 費用はどれくらいかかりますか？</span><span class="toggle">+</span></div>
+            <div class="qa-q"><span><span class="q-label">Q1.</span> 費用はどれくらいかかりますか？</span><span class="toggle">+</span></div>
             <div class="qa-a">月1回訪問で35,000円（税抜）＋駐車場代から。1人20分×9名で3時間。個人負担500円設定なら施設側の実質負担は30,500円。</div>
           </div>
           <div class="qa-item">
-            <div class="qa-q" onclick="toggleQA(this)"><span><span class="q-label">Q2.</span> 施術スペースがないのですが？</span><span class="toggle">+</span></div>
+            <div class="qa-q"><span><span class="q-label">Q2.</span> 施術スペースがないのですが？</span><span class="toggle">+</span></div>
             <div class="qa-a">畳3畳分のスペースがあれば十分。休憩室や空いている居室など一時的に活用。</div>
           </div>
           <div class="qa-item">
-            <div class="qa-q" onclick="toggleQA(this)"><span><span class="q-label">Q3.</span> ベッドやタオルなど事前に準備するものは？</span><span class="toggle">+</span></div>
+            <div class="qa-q"><span><span class="q-label">Q3.</span> ベッドやタオルなど事前に準備するものは？</span><span class="toggle">+</span></div>
             <div class="qa-a">一切なし。施術ベッド、タオル、消毒用品など全て持参。</div>
           </div>
           <div class="qa-item">
-            <div class="qa-q" onclick="toggleQA(this)"><span><span class="q-label">Q4.</span> シフト調整が難しいのですが？</span><span class="toggle">+</span></div>
+            <div class="qa-q"><span><span class="q-label">Q4.</span> シフト調整が難しいのですが？</span><span class="toggle">+</span></div>
             <div class="qa-a">毎月固定日（例：第2金曜日など）に訪問可能。あらかじめシフトに組み込める。1人20分なので現場を大きく止めることなく運用可能。</div>
           </div>
           <div class="qa-item">
-            <div class="qa-q" onclick="toggleQA(this)"><span><span class="q-label">Q5.</span> スタッフ全員が公平に受けられますか？</span><span class="toggle">+</span></div>
+            <div class="qa-q"><span><span class="q-label">Q5.</span> スタッフ全員が公平に受けられますか？</span><span class="toggle">+</span></div>
             <div class="qa-a">ローテーション制や希望制＋抽選など施設の状況に合わせた運用ルールを提案。「福利厚生の一環」として公式アナウンスで不公平感も解消。</div>
           </div>
         </div>
@@ -540,23 +537,23 @@ small{font-size:.72rem;line-height:1.6}
         <h2 class="fade-in" style="font-size:1.1rem;text-align:center;margin-bottom:12px;color:var(--accent)">Q6〜Q10</h2>
         <div class="fade-in">
           <div class="qa-item">
-            <div class="qa-q" onclick="toggleQA(this)"><span><span class="q-label">Q6.</span> 勤務中に施術を受けるのは気まずくないですか？</span><span class="toggle">+</span></div>
+            <div class="qa-q"><span><span class="q-label">Q6.</span> 勤務中に施術を受けるのは気まずくないですか？</span><span class="toggle">+</span></div>
             <div class="qa-a">「福利厚生の一環」として施設が公式に導入した制度としてアナウンスで解消。1人20分と短時間で現場への影響も最小限。</div>
           </div>
           <div class="qa-item">
-            <div class="qa-q" onclick="toggleQA(this)"><span><span class="q-label">Q7.</span> 人員がギリギリでキャンセルが続きそうで不安です。</span><span class="toggle">+</span></div>
+            <div class="qa-q"><span><span class="q-label">Q7.</span> 人員がギリギリでキャンセルが続きそうで不安です。</span><span class="toggle">+</span></div>
             <div class="qa-a">1人20分単位で現場を離れる時間を最小化。1週間前までに連絡で振替対応可能。</div>
           </div>
           <div class="qa-item">
-            <div class="qa-q" onclick="toggleQA(this)"><span><span class="q-label">Q8.</span> 施術者はどのような資格を持っていますか？</span><span class="toggle">+</span></div>
+            <div class="qa-q"><span><span class="q-label">Q8.</span> 施術者はどのような資格を持っていますか？</span><span class="toggle">+</span></div>
             <div class="qa-a">全員が厚生労働大臣認可の国家資格（あん摩マッサージ指圧師・はり師・きゅう師・柔道整復師）保有のプロフェッショナル。</div>
           </div>
           <div class="qa-item">
-            <div class="qa-q" onclick="toggleQA(this)"><span><span class="q-label">Q9.</span> 月1回の施術で本当に効果はありますか？</span><span class="toggle">+</span></div>
+            <div class="qa-q"><span><span class="q-label">Q9.</span> 月1回の施術で本当に効果はありますか？</span><span class="toggle">+</span></div>
             <div class="qa-a">筋肉の緊張をリセットし疲労の蓄積を防ぐ効果あり。顧客満足度96%が裏付け。月2回・4回プランもあり。</div>
           </div>
           <div class="qa-item">
-            <div class="qa-q" onclick="toggleQA(this)"><span><span class="q-label">Q10.</span> 福利厚生費として経費計上できますか？</span><span class="toggle">+</span></div>
+            <div class="qa-q"><span><span class="q-label">Q10.</span> 福利厚生費として経費計上できますか？</span><span class="toggle">+</span></div>
             <div class="qa-a">全スタッフが平等に利用できる制度設計であれば計上可能。制度設計のアドバイスも。</div>
           </div>
         </div>
