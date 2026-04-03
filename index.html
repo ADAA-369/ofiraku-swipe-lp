@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>出張整体オフィ楽｜介護スタッフの離職を防ぐ福利厚生</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --main:#2B6E4F;--main-dark:#1D4E38;--accent:#D4AF37;--warn:#C0392B;
+  --bg-dark:#111518;--text-light:#fff;
+  --gold-gradient:linear-gradient(135deg,#D4AF37,#F5D76E,#D4AF37);
+}
+html{font-size:16px;overflow:hidden;height:100vh;height:100dvh}
+body{
+  font-family:'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;
+  color:#fff;background:#000;
+  overflow:hidden;
+  height:100vh;height:100dvh;
+}
+/* Hide scrollbars */
+body::-webkit-scrollbar{display:none}
+body{-ms-overflow-style:none;scrollbar-width:none}
+
+/* Progress bar */
+#progress{position:fixed;top:0;left:0;height:3px;background:var(--gold-gradient);z-index:9999;transition:width .25s}
+
+/* Snap sections */
+.snap-section{
+  height:100vh;height:100dvh;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  position:relative;overflow:hidden;
+  padding:40px 20px 30px;
+  flex-shrink:0;
+}
+#sections-wrapper{
+  transition:transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.inner{max-width:420px;width:100%;margin:0 auto;position:relative;z-index:2}
+
+/* BG image sections */
+.bg-img{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0}
+.bg-overlay{position:absolute;inset:0;z-index:1}
+
+/* Typography */
+h2{font-size:1.35rem;line-height:1.55;margin-bottom:14px;font-weight:900;letter-spacing:.02em}
+h3{font-size:1.1rem;line-height:1.5;margin-bottom:10px;font-weight:700}
+p{font-size:.88rem;line-height:1.75;margin-bottom:12px}
+small{font-size:.72rem;line-height:1.6}
+.section-label{
+  display:inline-block;font-size:.65rem;letter-spacing:2px;font-weight:700;
+  padding:4px 14px;border-radius:20px;margin-bottom:12px;
+  background:var(--main);color:#fff;
+}
+
+/* CTA button */
+.cta-btn{
+  display:block;width:100%;max-width:340px;margin:14px auto 0;
+  padding:16px 20px;border:none;border-radius:60px;
+  background:var(--gold-gradient);color:#1a1a1a;
+  font-size:1rem;font-weight:900;text-align:center;
+  cursor:pointer;text-decoration:none;
+  box-shadow:0 4px 20px rgba(212,175,55,.4);
+  animation:pulse 2s infinite;
+  position:relative;z-index:5;
+}
+.cta-btn:active{transform:scale(.97)}
+@keyframes pulse{
+  0%,100%{box-shadow:0 4px 20px rgba(212,175,55,.4)}
+  50%{box-shadow:0 4px 35px rgba(212,175,55,.7)}
+}
+.cta-sub{text-align:center;font-size:.7rem;color:var(--accent);margin-top:8px;font-weight:700}
+
+/* Scroll hint */
+.scroll-hint{
+  position:absolute;bottom:18px;left:50%;transform:translateX(-50%);
+  font-size:.65rem;color:rgba(255,255,255,.5);letter-spacing:3px;
+  animation:bounceDown 1.5s infinite;z-index:3;
+}
+@keyframes bounceDown{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+
+/* Fade animation */
+.fade-in{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+.instant-visible .fade-in{opacity:1;transform:translateY(0)}
+
+/* Check items */
+.check-item{
+  display:flex;align-items:flex-start;gap:8px;
+  font-size:.78rem;line-height:1.6;margin-bottom:10px;
+  padding:6px 0;border-bottom:1px solid rgba(255,255,255,.08);
+}
+.check-item .icon{color:var(--accent);font-size:.85rem;flex-shrink:0;margin-top:2px}
+
+/* === Horizontal swipe === */
+.hswipe-container{
+  display:flex;overflow-x:scroll;scroll-snap-type:x mandatory;
+  width:100%;height:100%;
+  -webkit-overflow-scrolling:touch;
+}
+.hswipe-container::-webkit-scrollbar{display:none}
+.hswipe-container{-ms-overflow-style:none;scrollbar-width:none}
+.hswipe-page{
+  flex:0 0 100%;width:100%;min-width:100%;
+  scroll-snap-align:start;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:40px 20px 50px;
+  overflow-y:auto;
+}
+.hswipe-page::-webkit-scrollbar{display:none}
+.hswipe-page{scrollbar-width:none}
+.hswipe-page .inner{max-width:420px;width:100%;margin:0 auto}
+
+/* Dot indicators */
+.dot-nav{
+  position:absolute;bottom:14px;left:50%;transform:translateX(-50%);
+  display:flex;gap:8px;z-index:5;align-items:center;
+}
+.dot-nav .dot{
+  width:8px;height:8px;border-radius:50%;
+  background:rgba(255,255,255,.3);transition:all .3s;
+}
+.dot-nav .dot.active{background:var(--accent);transform:scale(1.3)}
+.dot-nav .arrow{font-size:.7rem;color:rgba(255,255,255,.4);cursor:pointer}
+
+/* Navigation hints */
+.nav-hint{
+  position:absolute;bottom:12px;left:50%;transform:translateX(-50%);
+  font-size:.75rem;color:var(--accent);font-weight:600;
+  letter-spacing:1px;z-index:10;
+  animation:hintPulse 2s ease-in-out infinite;
+  white-space:nowrap;
+}
+@keyframes hintPulse{
+  0%,100%{opacity:.6;transform:translateX(-50%) translateY(0)}
+  50%{opacity:1;transform:translateX(-50%) translateY(-3px)}
+}
+
+/* Cards */
+.card{
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
+  border-radius:14px;padding:16px;margin-bottom:10px;
+  backdrop-filter:blur(8px);
+}
+.card-number{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:28px;height:28px;border-radius:50%;
+  background:var(--accent);color:#1a1a1a;font-weight:900;font-size:.85rem;
+  margin-bottom:8px;
+}
+
+/* Cycle diagram */
+.cycle{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:6px;
+  margin:16px 0;
+}
+.cycle-item{
+  background:rgba(43,110,79,.3);border:1px solid var(--main);
+  border-radius:10px;padding:10px 14px;font-size:.78rem;font-weight:700;
+  text-align:center;flex:0 0 44%;
+}
+.cycle-arrow{
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;color:var(--accent);flex:0 0 8%;
+}
+
+/* Bad cycle */
+.bad-cycle .cycle-item{
+  background:rgba(192,57,43,.15);border-color:var(--warn);
+}
+
+/* Cost comparison */
+.cost-box{
+  text-align:center;padding:20px;border-radius:14px;margin-bottom:12px;
+}
+.cost-box.bad{background:rgba(192,57,43,.15);border:1px solid var(--warn)}
+.cost-box.good{background:rgba(43,110,79,.15);border:1px solid var(--main)}
+.cost-amount{font-size:1.8rem;font-weight:900}
+.vs{font-size:1.5rem;font-weight:900;color:var(--accent);text-align:center;margin:6px 0}
+
+/* Testimonial cards */
+.testimonial{
+  background:rgba(255,255,255,.06);border-radius:12px;padding:12px;
+  margin-bottom:8px;border-left:3px solid var(--accent);
+}
+.testimonial .meta{font-size:.65rem;color:var(--accent);margin-bottom:4px;font-weight:700}
+.testimonial .quote{font-size:.72rem;line-height:1.6;color:rgba(255,255,255,.85)}
+
+/* Big number */
+.big-number{font-size:4.5rem;font-weight:900;color:var(--accent);line-height:1}
+
+/* Q&A accordion */
+.qa-item{margin-bottom:6px;border-bottom:1px solid rgba(255,255,255,.1)}
+.qa-q{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:10px 0;cursor:pointer;font-size:.8rem;font-weight:700;
+  gap:10px;
+}
+.qa-q .q-label{color:var(--accent);font-weight:900;flex-shrink:0}
+.qa-q .toggle{font-size:1rem;color:var(--accent);transition:transform .3s;flex-shrink:0}
+.qa-q.open .toggle{transform:rotate(45deg)}
+.qa-a{
+  max-height:0;overflow:hidden;transition:max-height .3s;
+  font-size:.73rem;line-height:1.7;color:rgba(255,255,255,.7);
+  padding:0 0 0 26px;
+}
+.qa-a.open{max-height:300px;padding-bottom:10px}
+
+/* Offer badge */
+.badge{
+  display:inline-block;background:var(--warn);color:#fff;
+  font-size:.7rem;font-weight:900;padding:4px 16px;border-radius:20px;
+  margin-bottom:12px;
+}
+.strikethrough{text-decoration:line-through;color:rgba(255,255,255,.4)}
+
+/* Reason cards */
+.reason-card{
+  display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;
+}
+.reason-num{
+  flex-shrink:0;width:30px;height:30px;border-radius:50%;
+  background:var(--accent);color:#1a1a1a;font-weight:900;
+  display:flex;align-items:center;justify-content:center;font-size:.85rem;
+}
+.reason-text{font-size:.82rem;line-height:1.6}
+
+/* Job card */
+.job-card{
+  background:rgba(255,255,255,.95);color:#333;border-radius:12px;
+  padding:20px;margin:16px 0;
+}
+.job-card h3{color:#333;font-size:1rem}
+.job-highlight{
+  background:rgba(43,110,79,.12);border:2px solid var(--main);
+  border-radius:8px;padding:10px;margin-top:10px;
+  font-weight:900;color:var(--main);font-size:.9rem;
+}
+
+/* Footer */
+.footer{font-size:.65rem;color:rgba(255,255,255,.3);text-align:center;margin-top:16px}
+
+/* Desktop centering */
+@media(min-width:481px){
+  .snap-section,.hswipe-page{padding-left:calc((100vw - 420px)/2);padding-right:calc((100vw - 420px)/2)}
+}
+</style>
+</head>
+<body>
+
+<!-- Progress bar -->
+<div id="progress" style="width:0%"></div>
+
+<div id="sections-wrapper">
+<!-- ===== SECTION 1: FIRST VIEW ===== -->
+<section class="snap-section instant-visible" id="s1">
+  <div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80')"></div>
+  <div class="bg-overlay" style="background:rgba(0,0,0,0.75)"></div>
+  <div class="inner" style="text-align:center">
+    <div class="fade-in"><span class="section-label">介護施設の経営者・管理者様へ</span></div>
+    <h2 class="fade-in" style="font-size:1.45rem;margin-top:8px">介護スタッフが<br>「辞めたい」と思う前に<br>打てる、<span style="color:var(--accent)">新習慣。</span></h2>
+    <p class="fade-in" style="font-size:.82rem;color:rgba(255,255,255,.8);margin-top:10px">顧客満足度<strong style="color:var(--accent)">96%</strong>の国家資格保有者が施設に訪問し、<br>腰痛・肩こりを溜まる前にケア。</p>
+    <a href="#" class="cta-btn fade-in">初回無料で体験してみる</a>
+    <p class="cta-sub fade-in">先着3社限定・完全返金保証付き</p>
+  </div>
+  <!-- nav-hint added dynamically by JS -->
+</section>
+
+<!-- ===== SECTION 2: PROBLEM ===== -->
+<section class="snap-section instant-visible" id="s2" style="background:var(--bg-dark)">
+  <div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1584515933487-779824d29309?w=800&q=80')"></div>
+  <div class="bg-overlay" style="background:rgba(26,26,46,0.85)"></div>
+  <div class="inner">
+    <h2 class="fade-in" style="color:var(--warn)">採用して、育てて、<br>また辞める。<br><span style="color:#fff">その悪循環、<br>いつまで続けますか？</span></h2>
+    <p class="fade-in" style="color:rgba(255,255,255,.75)">介護スタッフの離職理由の上位は、腰痛や体の不調。施術前のカウンセリングと施術後のセルフケア指導で、日常から体を守る仕組みをつくります。</p>
+  </div>
+</section>
+
+<!-- ===== SECTION 3: CHECKLIST (横スワイプ) ===== -->
+<section class="snap-section" id="s3" style="background:var(--bg-dark);padding:0">
+  <div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80')"></div>
+  <div class="bg-overlay" style="background:rgba(26,26,46,0.88)"></div>
+  <div class="hswipe-container" data-hswipe style="position:relative;z-index:2">
+    <!-- Page 1 -->
+    <div class="hswipe-page">
+      <div class="inner">
+        <h2 class="fade-in" style="font-size:1.15rem;margin-bottom:16px">こんな状況、<br>心当たりはありませんか？</h2>
+        <div class="fade-in">
+          <div class="check-item"><span class="icon">&#9745;</span><span>入浴介助や移乗介助で腰を痛めたスタッフが、庇いながら働いている</span></div>
+          <div class="check-item"><span class="icon">&#9745;</span><span>肩こりがひどく頭痛まで出ているスタッフが、誰にも言えずに我慢している</span></div>
+          <div class="check-item"><span class="icon">&#9745;</span><span>夜勤明けの疲労が抜けず、判断ミスやインシデントのリスクが高まっている</span></div>
+          <div class="check-item"><span class="icon">&#9745;</span><span>体の不調を放置したスタッフが、ある日突然メンタルを崩して休職に入ってしまった</span></div>
+          <div class="check-item"><span class="icon">&#9745;</span><span>「腰が限界です」とドクターストップがかかり、戦力だったスタッフが現場を離れた</span></div>
+        </div>
+        <p class="fade-in" style="text-align:center;color:var(--accent);font-size:.75rem;font-weight:700;margin-top:12px">→ 横にスワイプ</p>
+      </div>
+    </div>
+    <!-- Page 2 -->
+    <div class="hswipe-page">
+      <div class="inner">
+        <h2 class="fade-in" style="font-size:1.15rem;margin-bottom:16px;color:var(--accent)">まだあります...</h2>
+        <div class="fade-in">
+          <div class="check-item"><span class="icon">&#9745;</span><span>スタッフが「体がつらい」と言い出した時には、すでに退職を決意した後だった</span></div>
+          <div class="check-item"><span class="icon">&#9745;</span><span>「介護の仕事は好きだけど、体がいつまで持つかわからない」と不安を抱えているスタッフがいる</span></div>
+          <div class="check-item"><span class="icon">&#9745;</span><span>1人が辞めるたびに残ったスタッフに業務がしわ寄せされ、連鎖退職が止まらない</span></div>
+          <div class="check-item"><span class="icon">&#9745;</span><span>人材紹介会社に高い手数料を払って採用したのに、半年も経たずに辞められた</span></div>
+          <div class="check-item"><span class="icon">&#9745;</span><span>スタッフの定着率を上げたいが、これ以上の給与アップは経営的に厳しい</span></div>
+        </div>
+        <p class="fade-in" style="text-align:center;font-size:.8rem;font-weight:700;color:var(--warn);margin-top:14px;line-height:1.6">ひとつでも当てはまるなら、<br>それはスタッフからの<br>"見えないSOS"です。</p>
+      </div>
+    </div>
+  </div>
+  <div class="dot-nav">
+    <span class="arrow" data-dir="prev">&lsaquo;</span>
+    <span class="dot active"></span><span class="dot"></span>
+    <span class="arrow" data-dir="next">&rsaquo;</span>
+  </div>
+</section>
+
+<!-- ===== SECTION 4: BAD CYCLE ===== -->
+<section class="snap-section" id="s4" style="background:linear-gradient(180deg,#1a0a0a,var(--bg-dark))">
+  <div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=800&q=80')"></div>
+  <div class="bg-overlay" style="background:rgba(26,10,10,0.85)"></div>
+  <div class="inner" style="text-align:center">
+    <h2 class="fade-in" style="font-size:1.15rem;color:var(--warn)">放置すると、こうなります</h2>
+    <div class="cycle bad-cycle fade-in" style="margin:20px 0">
+      <div class="cycle-item">突然の<br>休職・退職</div>
+      <div class="cycle-arrow">→</div>
+      <div class="cycle-item">残ったスタッフへの<br>負担増</div>
+      <div class="cycle-arrow" style="flex:0 0 100%;transform:rotate(90deg)">↓</div>
+      <div class="cycle-item">採用・育成コストの<br>膨張</div>
+      <div class="cycle-arrow">←</div>
+      <div class="cycle-item">連鎖退職</div>
+    </div>
+    <p class="fade-in" style="font-size:1.15rem;font-weight:900;color:#fff;margin-top:14px">この悪循環は、<span style="color:var(--accent)">止められます。</span></p>
+  </div>
+</section>
+
+<!-- ===== SECTION 5: SOLUTION ===== -->
+<section class="snap-section" id="s5">
+  <div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80')"></div>
+  <div class="bg-overlay" style="background:rgba(43,110,79,0.8)"></div>
+  <div class="inner" style="text-align:center">
+    <div class="fade-in" style="font-size:2rem;font-weight:900;color:var(--accent);letter-spacing:.05em;margin-bottom:6px">オフィ楽</div>
+    <p class="fade-in" style="font-size:.83rem;color:rgba(255,255,255,.85);margin-bottom:18px">顧客満足度<strong style="color:var(--accent)">96%</strong>。厚生労働大臣認可の国家資格保有者が施設に直接訪問。介護スタッフの心身を整える出張整体「オフィ楽」。</p>
+    <p class="fade-in" style="font-size:.82rem;color:rgba(255,255,255,.7)">畳3畳分のスペースだけ。備品の準備は一切不要。施設長や管理者の手間を増やすことなく、すぐに導入できます。</p>
+  </div>
+</section>
+
+<!-- ===== SECTION 6: 3 FEATURES ===== -->
+<section class="snap-section" id="s6" style="background:var(--bg-dark)">
+  <div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1551076805-e1869033e561?w=800&q=80')"></div>
+  <div class="bg-overlay" style="background:rgba(43,110,79,0.85)"></div>
+  <div class="inner">
+    <h2 class="fade-in" style="text-align:center;font-size:1.15rem;margin-bottom:16px"><span style="color:var(--accent)">3つの特徴</span></h2>
+    <div class="card fade-in">
+      <div class="card-number">1</div>
+      <h3 style="font-size:.92rem">施術前カウンセリング</h3>
+      <p style="font-size:.78rem;color:rgba(255,255,255,.7);margin:0">一人ひとりの不調を把握</p>
+    </div>
+    <div class="card fade-in">
+      <div class="card-number">2</div>
+      <h3 style="font-size:.92rem">国家資格者によるプロの施術</h3>
+      <p style="font-size:.78rem;color:rgba(255,255,255,.7);margin:0">1人20分で腰痛・肩こりをケア</p>
+    </div>
+    <div class="card fade-in">
+      <div class="card-number">3</div>
+      <h3 style="font-size:.92rem">施術後セルフケア指導</h3>
+      <p style="font-size:.78rem;color:rgba(255,255,255,.7);margin:0">日常からスタッフ自身が体を守れる習慣をつくります</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 7: GOOD CYCLE + CTA ===== -->
+<section class="snap-section" id="s7">
+  <div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=800&q=80')"></div>
+  <div class="bg-overlay" style="background:rgba(26,26,46,0.8)"></div>
+  <div class="inner" style="text-align:center">
+    <h2 class="fade-in" style="font-size:1.1rem;margin-bottom:14px">導入後の<span style="color:var(--accent)">好循環</span></h2>
+    <div class="cycle fade-in" style="margin:14px 0">
+      <div class="cycle-item">体が楽になる</div>
+      <div class="cycle-arrow">→</div>
+      <div class="cycle-item">離職が減る</div>
+      <div class="cycle-arrow" style="flex:0 0 100%;transform:rotate(90deg)">↓</div>
+      <div class="cycle-item">現場が安定する</div>
+      <div class="cycle-arrow">←</div>
+      <div class="cycle-item">採用コストが浮く</div>
+    </div>
+    <p class="fade-in" style="font-size:.82rem;color:rgba(255,255,255,.8);margin-bottom:10px">オフィ楽は、スタッフのケアを通じて、施設の経営基盤を守る福利厚生サービスです。</p>
+    <a href="#" class="cta-btn fade-in">初回無料で体験してみる</a>
+    <p class="cta-sub fade-in">先着3社限定・完全返金保証付き</p>
+  </div>
+</section>
+
+<!-- ===== SECTION 8: BENEFITS (横スワイプ) ===== -->
+<section class="snap-section" id="s8" style="padding:0">
+  <div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80')"></div>
+  <div class="bg-overlay" style="background:rgba(43,110,79,0.85)"></div>
+  <div class="hswipe-container" data-hswipe style="position:relative;z-index:2">
+    <!-- Page 1 -->
+    <div class="hswipe-page">
+      <div class="inner">
+        <h2 class="fade-in" style="font-size:1.1rem;margin-bottom:14px">「オフィ楽」を導入すると——</h2>
+        <div class="fade-in">
+          <div class="check-item"><span class="icon">&#9745;</span><span>入浴介助や移乗介助で酷使する腰・肩の負担が和らぎ、スタッフが体を庇わずに働けるようになる</span></div>
+          <div class="check-item"><span class="icon">&#9745;</span><span>勤務時間内に施設で受けられるから、休日に子育てや家事で忙しいスタッフも体のケアを後回しにせずに済む</span></div>
+          <div class="check-item"><span class="icon">&#9745;</span><span>月1回のプロのケアで、体の不調がメンタルに波及する前に未然に防げる</span></div>
+          <div class="check-item"><span class="icon">&#9745;</span><span>「腰がいつまで持つかわからない」という将来不安が和らぎ、スタッフが安心して介護の仕事を続けられる</span></div>
+          <div class="check-item"><span class="icon">&#9745;</span><span>「体がつらいから辞めたい」という退職の引き金がなくなり、離職率が低下する</span></div>
+        </div>
+        <p class="fade-in" style="text-align:center;color:var(--accent);font-size:.75rem;font-weight:700;margin-top:10px">→ 横にスワイプ</p>
+      </div>
+    </div>
+    <!-- Page 2 -->
+    <div class="hswipe-page">
+      <div class="inner">
+        <h2 class="fade-in" style="font-size:1.1rem;margin-bottom:14px;color:var(--accent)">さらに——</h2>
+        <div class="fade-in">
+          <div class="check-item"><span class="icon">&#9745;</span><span>スタッフの定着率が上がることで、人材紹介への高い手数料や採用コストを大幅に削減できる</span></div>
+          <div class="check-item"><span class="icon">&#9745;</span><span>ベテランスタッフが長く定着することで現場の指導体制が安定し、新人の育成も回る好循環が生まれる</span></div>
+          <div class="check-item"><span class="icon">&#9745;</span><span>「施設が自分たちの体を気遣ってくれている」という実感が、スタッフの帰属意識と組織への信頼を高める</span></div>
+          <div class="check-item"><span class="icon">&#9745;</span><span>スタッフのコンディションが整うことで、利用者へのケアの質が向上し、施設全体のサービスレベルが上がる</span></div>
+          <div class="check-item"><span class="icon">&#9745;</span><span>「福利厚生で出張整体あり」が採用時の差別化ポイントになり、「あの施設は働きやすい」と選ばれる施設になる</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dot-nav">
+    <span class="arrow" data-dir="prev">&lsaquo;</span>
+    <span class="dot active"></span><span class="dot"></span>
+    <span class="arrow" data-dir="next">&rsaquo;</span>
+  </div>
+</section>
+
+<!-- ===== SECTION 9: COST ===== -->
+<section class="snap-section" id="s9">
+  <div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80')"></div>
+  <div class="bg-overlay" style="background:rgba(26,26,46,0.85)"></div>
+  <div class="inner" style="text-align:center">
+    <h2 class="fade-in" style="font-size:1.1rem;margin-bottom:18px">コスト比較</h2>
+    <div class="cost-box bad fade-in">
+      <p style="font-size:.75rem;margin-bottom:4px;color:rgba(255,255,255,.6)">スタッフ1人の離職コスト</p>
+      <div class="cost-amount" style="color:var(--warn)">約50〜100万円</div>
+    </div>
+    <div class="vs fade-in">VS</div>
+    <div class="cost-box good fade-in">
+      <p style="font-size:.75rem;margin-bottom:4px;color:rgba(255,255,255,.6)">オフィ楽（実質負担）</p>
+      <div class="cost-amount" style="color:var(--accent)">月30,500円〜</div>
+    </div>
+    <p class="fade-in" style="font-size:.88rem;font-weight:700;margin-top:14px;color:var(--accent)">1人の離職を防ぐだけで<br>年間の費用を回収できます</p>
+  </div>
+</section>
+
+<!-- ===== SECTION 10: RECRUITING ===== -->
+<section class="snap-section" id="s10" style="background:var(--bg-dark)">
+  <div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1573497620053-ea5300f94f21?w=800&q=80')"></div>
+  <div class="bg-overlay" style="background:rgba(43,110,79,0.82)"></div>
+  <div class="inner" style="text-align:center">
+    <h2 class="fade-in" style="font-size:1.1rem;margin-bottom:18px">採用力UP</h2>
+    <div class="job-card fade-in">
+      <h3>求人票</h3>
+      <p style="font-size:.82rem;color:#555;margin-bottom:8px">某介護施設 ／ 正社員</p>
+      <div class="job-highlight">福利厚生：出張整体あり（月1回）</div>
+    </div>
+    <p class="fade-in" style="font-size:1rem;font-weight:900;margin-top:16px">この一行が、<br><span style="color:var(--accent)">採用の差別化ポイント</span>になる。</p>
+  </div>
+</section>
+
+<!-- ===== SECTION 11: TESTIMONIALS ===== -->
+<section class="snap-section" id="s11" style="background:var(--bg-dark)">
+  <div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=800&q=80')"></div>
+  <div class="bg-overlay" style="background:rgba(26,26,46,0.85)"></div>
+  <div class="inner">
+    <h2 class="fade-in" style="text-align:center;font-size:1.1rem;margin-bottom:14px">導入施設の声</h2>
+    <div class="testimonial fade-in">
+      <div class="meta">CASE 1 ｜ 特養・40代女性</div>
+      <div class="quote">「腰が痛いのを我慢して働いていたスタッフが、施術後に『体が軽くなった！』と笑顔で戻ってきたのを見て、導入して本当に良かったと思いました。休職する前に手を打てるのが一番のメリットです。」</div>
+    </div>
+    <div class="testimonial fade-in">
+      <div class="meta">CASE 2 ｜ 有料老人ホーム・30代女性</div>
+      <div class="quote">「子育て中のスタッフは、休日に整体に行く余裕がありません。勤務中に施設で受けられるこの仕組みは本当にありがたいです。定着率も上がり、結果的にコスト削減にもつながっています。」</div>
+    </div>
+    <div class="testimonial fade-in">
+      <div class="meta">CASE 3 ｜ デイサービス・50代女性</div>
+      <div class="quote">「スタッフから『この施設は自分たちのことを考えてくれている』と言われたとき、導入して良かったと実感しました。離職率が下がり、利用者へのサービスの質も目に見えて向上しています。」</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 12: SATISFACTION + CTA ===== -->
+<section class="snap-section" id="s12">
+  <div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&q=80')"></div>
+  <div class="bg-overlay" style="background:rgba(43,110,79,0.8)"></div>
+  <div class="inner" style="text-align:center">
+    <p class="fade-in" style="font-size:.8rem;color:rgba(255,255,255,.6);margin-bottom:4px">顧客満足度</p>
+    <div class="big-number fade-in">96<span style="font-size:2rem">%</span></div>
+    <p class="fade-in" style="font-size:.85rem;margin-top:12px;color:rgba(255,255,255,.8)">ご利用いただいたお客様の<br><strong style="color:var(--accent)">96%</strong>が「また受けたい」と回答</p>
+    <a href="#" class="cta-btn fade-in" style="margin-top:20px">初回無料で体験してみる</a>
+    <p class="cta-sub fade-in">先着3社限定・完全返金保証付き</p>
+  </div>
+</section>
+
+<!-- ===== SECTION 13: Q&A (横スワイプ) ===== -->
+<section class="snap-section" id="s13" style="padding:0">
+  <div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80')"></div>
+  <div class="bg-overlay" style="background:rgba(26,26,46,0.88)"></div>
+  <div class="hswipe-container" data-hswipe style="position:relative;z-index:2">
+    <!-- Page 1: Q1-Q5 -->
+    <div class="hswipe-page">
+      <div class="inner">
+        <h2 class="fade-in" style="font-size:1.1rem;text-align:center;margin-bottom:12px">よくあるご質問</h2>
+        <div class="fade-in">
+          <div class="qa-item">
+            <div class="qa-q" onclick="toggleQA(this)"><span><span class="q-label">Q1.</span> 費用はどれくらいかかりますか？</span><span class="toggle">+</span></div>
+            <div class="qa-a">月1回訪問で35,000円（税抜）＋駐車場代から。1人20分×9名で3時間。個人負担500円設定なら施設側の実質負担は30,500円。</div>
+          </div>
+          <div class="qa-item">
+            <div class="qa-q" onclick="toggleQA(this)"><span><span class="q-label">Q2.</span> 施術スペースがないのですが？</span><span class="toggle">+</span></div>
+            <div class="qa-a">畳3畳分のスペースがあれば十分。休憩室や空いている居室など一時的に活用。</div>
+          </div>
+          <div class="qa-item">
+            <div class="qa-q" onclick="toggleQA(this)"><span><span class="q-label">Q3.</span> ベッドやタオルなど事前に準備するものは？</span><span class="toggle">+</span></div>
+            <div class="qa-a">一切なし。施術ベッド、タオル、消毒用品など全て持参。</div>
+          </div>
+          <div class="qa-item">
+            <div class="qa-q" onclick="toggleQA(this)"><span><span class="q-label">Q4.</span> シフト調整が難しいのですが？</span><span class="toggle">+</span></div>
+            <div class="qa-a">毎月固定日（例：第2金曜日など）に訪問可能。あらかじめシフトに組み込める。1人20分なので現場を大きく止めることなく運用可能。</div>
+          </div>
+          <div class="qa-item">
+            <div class="qa-q" onclick="toggleQA(this)"><span><span class="q-label">Q5.</span> スタッフ全員が公平に受けられますか？</span><span class="toggle">+</span></div>
+            <div class="qa-a">ローテーション制や希望制＋抽選など施設の状況に合わせた運用ルールを提案。「福利厚生の一環」として公式アナウンスで不公平感も解消。</div>
+          </div>
+        </div>
+        <p class="fade-in" style="text-align:center;color:var(--accent);font-size:.75rem;font-weight:700;margin-top:8px">→ Q6〜Q10 を見る</p>
+      </div>
+    </div>
+    <!-- Page 2: Q6-Q10 -->
+    <div class="hswipe-page">
+      <div class="inner">
+        <h2 class="fade-in" style="font-size:1.1rem;text-align:center;margin-bottom:12px;color:var(--accent)">Q6〜Q10</h2>
+        <div class="fade-in">
+          <div class="qa-item">
+            <div class="qa-q" onclick="toggleQA(this)"><span><span class="q-label">Q6.</span> 勤務中に施術を受けるのは気まずくないですか？</span><span class="toggle">+</span></div>
+            <div class="qa-a">「福利厚生の一環」として施設が公式に導入した制度としてアナウンスで解消。1人20分と短時間で現場への影響も最小限。</div>
+          </div>
+          <div class="qa-item">
+            <div class="qa-q" onclick="toggleQA(this)"><span><span class="q-label">Q7.</span> 人員がギリギリでキャンセルが続きそうで不安です。</span><span class="toggle">+</span></div>
+            <div class="qa-a">1人20分単位で現場を離れる時間を最小化。1週間前までに連絡で振替対応可能。</div>
+          </div>
+          <div class="qa-item">
+            <div class="qa-q" onclick="toggleQA(this)"><span><span class="q-label">Q8.</span> 施術者はどのような資格を持っていますか？</span><span class="toggle">+</span></div>
+            <div class="qa-a">全員が厚生労働大臣認可の国家資格（あん摩マッサージ指圧師・はり師・きゅう師・柔道整復師）保有のプロフェッショナル。</div>
+          </div>
+          <div class="qa-item">
+            <div class="qa-q" onclick="toggleQA(this)"><span><span class="q-label">Q9.</span> 月1回の施術で本当に効果はありますか？</span><span class="toggle">+</span></div>
+            <div class="qa-a">筋肉の緊張をリセットし疲労の蓄積を防ぐ効果あり。顧客満足度96%が裏付け。月2回・4回プランもあり。</div>
+          </div>
+          <div class="qa-item">
+            <div class="qa-q" onclick="toggleQA(this)"><span><span class="q-label">Q10.</span> 福利厚生費として経費計上できますか？</span><span class="toggle">+</span></div>
+            <div class="qa-a">全スタッフが平等に利用できる制度設計であれば計上可能。制度設計のアドバイスも。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dot-nav">
+    <span class="arrow" data-dir="prev">&lsaquo;</span>
+    <span class="dot active"></span><span class="dot"></span>
+    <span class="arrow" data-dir="next">&rsaquo;</span>
+  </div>
+</section>
+
+<!-- ===== SECTION 14: OFFER ===== -->
+<section class="snap-section" id="s14">
+  <div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=80')"></div>
+  <div class="bg-overlay" style="background:rgba(26,26,46,0.8)"></div>
+  <div class="inner" style="text-align:center">
+    <div class="fade-in" style="font-size:.75rem;letter-spacing:4px;color:var(--accent);margin-bottom:8px;font-weight:700">SPECIAL OFFER</div>
+    <div class="badge fade-in">先着3社限定</div>
+    <h2 class="fade-in" style="font-size:1.3rem;margin-bottom:14px">初回訪問<span style="color:var(--accent)">完全無料</span>体験</h2>
+    <div class="fade-in" style="margin-bottom:16px">
+      <span class="strikethrough" style="font-size:1.3rem">35,000円</span>
+      <span style="font-size:2.5rem;font-weight:900;color:var(--accent);margin-left:10px">0<span style="font-size:1.2rem">円</span></span>
+    </div>
+    <p class="fade-in" style="font-size:.85rem;font-weight:700;color:var(--accent)">完全返金保証付き</p>
+    <p class="fade-in" style="font-size:.75rem;color:rgba(255,255,255,.6);margin-top:8px">万が一ご満足いただけなかった場合、費用は一切いただきません</p>
+  </div>
+</section>
+
+<!-- ===== SECTION 15: 3 REASONS ===== -->
+<section class="snap-section" id="s15" style="background:var(--bg-dark)">
+  <div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80')"></div>
+  <div class="bg-overlay" style="background:rgba(43,110,79,0.85)"></div>
+  <div class="inner">
+    <h2 class="fade-in" style="text-align:center;font-size:1.05rem;margin-bottom:18px">なぜここまでできるのか？<br><span style="color:var(--accent)">3つの理由</span></h2>
+    <div class="reason-card fade-in">
+      <div class="reason-num">1</div>
+      <div class="reason-text">体験すれば「続ける価値がある」と確信いただける<strong style="color:var(--accent)">自信</strong>がある</div>
+    </div>
+    <div class="reason-card fade-in">
+      <div class="reason-num">2</div>
+      <div class="reason-text">初回のリアルな声をもとに施設に最適なプランをご提案するための<strong style="color:var(--accent)">大切な機会</strong></div>
+    </div>
+    <div class="reason-card fade-in">
+      <div class="reason-num">3</div>
+      <div class="reason-text">まだ馴染みのないサービスだからこそ「説明」ではなく<strong style="color:var(--accent)">「体感」</strong>で判断していただきたい</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 16: URGENCY ===== -->
+<section class="snap-section" id="s16" style="background:linear-gradient(180deg,#1a0a0a,var(--bg-dark))">
+  <div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1501139083538-0139583c060f?w=800&q=80')"></div>
+  <div class="bg-overlay" style="background:rgba(192,57,43,0.75)"></div>
+  <div class="inner" style="text-align:center">
+    <p class="fade-in" style="font-size:.88rem;line-height:1.8;color:rgba(255,255,255,.85);margin-bottom:20px">すでに数施設からお問い合わせをいただいております。<strong style="color:var(--warn)">先着3社</strong>に達し次第、受付を終了いたします。</p>
+    <p class="fade-in" style="font-size:.88rem;line-height:1.8;color:rgba(255,255,255,.85)">経営者様にリスクは一切ありません。まずは、スタッフの皆様の<strong style="color:var(--accent)">「体が楽になった」</strong>という笑顔を見てから、ご判断ください。</p>
+  </div>
+</section>
+
+<!-- ===== SECTION 17: FINAL CTA ===== -->
+<section class="snap-section" id="s17">
+  <div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1573497620053-ea5300f94f21?w=800&q=80')"></div>
+  <div class="bg-overlay" style="background:rgba(43,110,79,0.82)"></div>
+  <div class="inner" style="text-align:center">
+    <h2 class="fade-in" style="font-size:1.25rem;margin-bottom:20px">スタッフの体を守ることは、<br><span style="color:var(--accent)">施設の未来を守ること。</span></h2>
+    <a href="tel:0000000000" class="cta-btn fade-in" style="margin-bottom:10px;background:var(--main);color:#fff;box-shadow:0 4px 20px rgba(43,110,79,.4);animation:none">
+      電話で相談する
+    </a>
+    <a href="#" class="cta-btn fade-in" style="background:linear-gradient(135deg,#06C755,#00B140);color:#fff;box-shadow:0 4px 20px rgba(6,199,85,.3);animation:none">
+      LINEで無料相談
+    </a>
+    <p class="cta-sub fade-in" style="margin-top:12px">先着3社限定・完全返金保証付き</p>
+    <div class="footer fade-in" style="margin-top:30px">&copy; 出張整体オフィ楽</div>
+  </div>
+</section>
+</div><!-- /sections-wrapper -->
+
+<script>
+// Progress bar is now updated by goToSection()
+
+// === Intersection Observer for fade-in ===
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Instant visible for first 2 sections
+document.querySelectorAll('.instant-visible .fade-in').forEach(el => el.classList.add('visible'));
+
+// Fallback: show all after 2s
+setTimeout(() => {
+  document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+}, 2000);
+
+// === Q&A accordion ===
+function toggleQA(el) {
+  const a = el.nextElementSibling;
+  const isOpen = el.classList.contains('open');
+  // Close all in same container
+  el.closest('.inner').querySelectorAll('.qa-q').forEach(q => {
+    q.classList.remove('open');
+    q.nextElementSibling.classList.remove('open');
+  });
+  if (!isOpen) {
+    el.classList.add('open');
+    a.classList.add('open');
+  }
+}
+
+// === Horizontal swipe dot navigation ===
+document.querySelectorAll('[data-hswipe]').forEach(container => {
+  const section = container.closest('.snap-section');
+  const dots = section.querySelectorAll('.dot-nav .dot');
+  const pages = container.querySelectorAll('.hswipe-page');
+  const arrows = section.querySelectorAll('.dot-nav .arrow');
+
+  function updateDots() {
+    const idx = Math.round(container.scrollLeft / container.clientWidth);
+    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+  }
+
+  container.addEventListener('scroll', updateDots, { passive: true });
+
+  arrows.forEach(arrow => {
+    arrow.addEventListener('click', () => {
+      const dir = arrow.dataset.dir;
+      const idx = Math.round(container.scrollLeft / container.clientWidth);
+      const target = dir === 'next' ? idx + 1 : idx - 1;
+      if (target >= 0 && target < pages.length) {
+        container.scrollTo({ left: target * container.clientWidth, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Mouse drag support
+  let isDragging = false, startX, scrollStart;
+  container.addEventListener('mousedown', e => {
+    isDragging = true; startX = e.pageX; scrollStart = container.scrollLeft;
+    container.style.cursor = 'grabbing';
+  });
+  container.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+    e.preventDefault();
+    container.scrollLeft = scrollStart - (e.pageX - startX);
+  });
+  container.addEventListener('mouseup', () => {
+    isDragging = false; container.style.cursor = '';
+    // Snap to nearest page
+    const idx = Math.round(container.scrollLeft / container.clientWidth);
+    container.scrollTo({ left: idx * container.clientWidth, behavior: 'smooth' });
+  });
+  container.addEventListener('mouseleave', () => {
+    if (isDragging) {
+      isDragging = false; container.style.cursor = '';
+      const idx = Math.round(container.scrollLeft / container.clientWidth);
+      container.scrollTo({ left: idx * container.clientWidth, behavior: 'smooth' });
+    }
+  });
+});
+
+// === Full-page snap via JS (translateY) ===
+const wrapper = document.getElementById('sections-wrapper');
+const allSections = document.querySelectorAll('section');
+let currentSection = 0;
+let isAnimating = false;
+
+function goToSection(index) {
+  if (index < 0 || index >= allSections.length || isAnimating) return;
+  isAnimating = true;
+  currentSection = index;
+  const vh = window.innerHeight;
+  wrapper.style.transform = `translateY(-${index * vh}px)`;
+  const pct = ((index + 1) / allSections.length) * 100;
+  document.getElementById('progress').style.width = pct + '%';
+  allSections[index].querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+  updateNavHints();
+  setTimeout(() => { isAnimating = false; }, 700);
+}
+
+// Handle window resize
+window.addEventListener('resize', () => {
+  const vh = window.innerHeight;
+  wrapper.style.transition = 'none';
+  wrapper.style.transform = `translateY(-${currentSection * vh}px)`;
+  requestAnimationFrame(() => {
+    wrapper.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)';
+  });
+});
+
+// === Helper: get horizontal page info ===
+function getHSwipeInfo(section) {
+  const container = section.querySelector('[data-hswipe]');
+  if (!container) return null;
+  const pages = container.querySelectorAll('.hswipe-page');
+  const currentPage = Math.round(container.scrollLeft / container.clientWidth);
+  const totalPages = pages.length;
+  const isLastPage = currentPage >= totalPages - 1;
+  const isFirstPage = currentPage <= 0;
+  return { container, currentPage, totalPages, isLastPage, isFirstPage };
+}
+
+function scrollHSwipe(container, direction) {
+  const currentPage = Math.round(container.scrollLeft / container.clientWidth);
+  const target = direction === 'right' ? currentPage + 1 : currentPage - 1;
+  container.scrollTo({ left: target * container.clientWidth, behavior: 'smooth' });
+}
+
+// === Wheel event: handles both vertical page-switch AND horizontal swipe ===
+document.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  if (isAnimating) return;
+
+  const section = allSections[currentSection];
+  const hInfo = getHSwipeInfo(section);
+
+  // Mac trackpad: deltaX for horizontal, deltaY for vertical
+  const absX = Math.abs(e.deltaX);
+  const absY = Math.abs(e.deltaY);
+
+  // Horizontal swipe detected (trackpad 2-finger horizontal)
+  if (hInfo && absX > absY && absX > 5) {
+    if (e.deltaX > 0 && !hInfo.isLastPage) {
+      scrollHSwipe(hInfo.container, 'right');
+    } else if (e.deltaX < 0 && !hInfo.isFirstPage) {
+      scrollHSwipe(hInfo.container, 'left');
+    }
+    return;
+  }
+
+  // Vertical swipe
+  if (absY > 5) {
+    if (e.deltaY > 0) {
+      // Scrolling down
+      if (hInfo && !hInfo.isLastPage) {
+        // Still have horizontal pages to show - scroll right first
+        scrollHSwipe(hInfo.container, 'right');
+      } else {
+        goToSection(currentSection + 1);
+      }
+    } else {
+      // Scrolling up
+      if (hInfo && !hInfo.isFirstPage) {
+        scrollHSwipe(hInfo.container, 'left');
+      } else {
+        goToSection(currentSection - 1);
+      }
+    }
+  }
+}, { passive: false });
+
+// === Keyboard ===
+document.addEventListener('keydown', (e) => {
+  const section = allSections[currentSection];
+  const hInfo = getHSwipeInfo(section);
+
+  if (e.key === 'ArrowRight' && hInfo && !hInfo.isLastPage) {
+    e.preventDefault(); scrollHSwipe(hInfo.container, 'right');
+  } else if (e.key === 'ArrowLeft' && hInfo && !hInfo.isFirstPage) {
+    e.preventDefault(); scrollHSwipe(hInfo.container, 'left');
+  } else if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+    e.preventDefault();
+    if (hInfo && !hInfo.isLastPage) {
+      scrollHSwipe(hInfo.container, 'right');
+    } else {
+      goToSection(currentSection + 1);
+    }
+  } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+    e.preventDefault();
+    if (hInfo && !hInfo.isFirstPage) {
+      scrollHSwipe(hInfo.container, 'left');
+    } else {
+      goToSection(currentSection - 1);
+    }
+  }
+});
+
+// === Touch swipe: vertical and horizontal ===
+let tStartX = 0, tStartY = 0;
+document.addEventListener('touchstart', (e) => {
+  tStartX = e.touches[0].clientX;
+  tStartY = e.touches[0].clientY;
+}, { passive: true });
+document.addEventListener('touchend', (e) => {
+  const dx = e.changedTouches[0].clientX - tStartX;
+  const dy = tStartY - e.changedTouches[0].clientY; // positive = swipe up
+  const absDx = Math.abs(dx);
+  const absDy = Math.abs(dy);
+  const section = allSections[currentSection];
+  const hInfo = getHSwipeInfo(section);
+
+  if (absDx > absDy && absDx > 40) {
+    // Horizontal swipe
+    if (hInfo) {
+      if (dx < 0 && !hInfo.isLastPage) {
+        scrollHSwipe(hInfo.container, 'right');
+      } else if (dx > 0 && !hInfo.isFirstPage) {
+        scrollHSwipe(hInfo.container, 'left');
+      }
+    }
+  } else if (absDy > 40) {
+    // Vertical swipe
+    if (dy > 0) {
+      if (hInfo && !hInfo.isLastPage) {
+        scrollHSwipe(hInfo.container, 'right');
+      } else {
+        goToSection(currentSection + 1);
+      }
+    } else {
+      if (hInfo && !hInfo.isFirstPage) {
+        scrollHSwipe(hInfo.container, 'left');
+      } else {
+        goToSection(currentSection - 1);
+      }
+    }
+  }
+}, { passive: true });
+
+// === Navigation hints ===
+function updateNavHints() {
+  document.querySelectorAll('.nav-hint').forEach(h => {
+    const section = h.closest('section');
+    const hInfo = getHSwipeInfo(section);
+    const sIdx = [...allSections].indexOf(section);
+    const isLast = sIdx === allSections.length - 1;
+
+    if (hInfo && !hInfo.isLastPage) {
+      h.textContent = '→ 横にスワイプ';
+      h.style.display = 'block';
+    } else if (!isLast) {
+      h.textContent = '↓ 下にスワイプ';
+      h.style.display = 'block';
+    } else {
+      h.style.display = 'none';
+    }
+  });
+}
+
+// Update hints when horizontal scroll changes
+document.querySelectorAll('[data-hswipe]').forEach(container => {
+  container.addEventListener('scroll', () => {
+    setTimeout(updateNavHints, 100);
+  }, { passive: true });
+});
+
+// Add nav-hint to all sections that don't have one
+allSections.forEach(sec => {
+  if (!sec.querySelector('.nav-hint')) {
+    const hint = document.createElement('div');
+    hint.className = 'nav-hint';
+    sec.appendChild(hint);
+  }
+});
+
+// Make first section visible on load
+allSections[0].querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+updateNavHints();
+</script>
+</body>
+</html>
