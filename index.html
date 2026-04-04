@@ -43,9 +43,9 @@ body{-ms-overflow-style:none;scrollbar-width:none}
 .bg-overlay{position:absolute;inset:0;z-index:1}
 
 /* Typography */
-h2{font-size:1.35rem;line-height:1.55;margin-bottom:14px;font-weight:900;letter-spacing:.02em}
-h3{font-size:1.1rem;line-height:1.5;margin-bottom:10px;font-weight:700}
-p{font-size:.88rem;line-height:1.75;margin-bottom:12px}
+h2{font-size:1.3rem;line-height:1.55;margin-bottom:14px;font-weight:900;letter-spacing:.02em}
+h3{font-size:1.05rem;line-height:1.5;margin-bottom:10px;font-weight:700}
+p{font-size:.9rem;line-height:1.75;margin-bottom:12px}
 small{font-size:.72rem;line-height:1.6}
 .section-label{
   display:inline-block;font-size:.65rem;letter-spacing:2px;font-weight:700;
@@ -69,7 +69,7 @@ small{font-size:.72rem;line-height:1.6}
   0%,100%{box-shadow:0 4px 20px rgba(212,175,55,.4)}
   50%{box-shadow:0 4px 35px rgba(212,175,55,.7)}
 }
-.cta-sub{text-align:center;font-size:.7rem;color:var(--accent);margin-top:8px;font-weight:700}
+.cta-sub{text-align:center;font-size:.8rem;color:var(--accent);margin-top:8px;font-weight:700}
 
 /* Scroll hint */
 .scroll-hint{
@@ -87,7 +87,7 @@ small{font-size:.72rem;line-height:1.6}
 /* Check items */
 .check-item{
   display:flex;align-items:flex-start;gap:8px;
-  font-size:.78rem;line-height:1.6;margin-bottom:10px;
+  font-size:.88rem;line-height:1.6;margin-bottom:10px;
   padding:6px 0;border-bottom:1px solid rgba(255,255,255,.08);
 }
 .check-item .icon{color:var(--accent);font-size:.85rem;flex-shrink:0;margin-top:2px}
@@ -113,20 +113,20 @@ small{font-size:.72rem;line-height:1.6}
 
 /* Dot indicators */
 .dot-nav{
-  position:absolute;bottom:14px;left:50%;transform:translateX(-50%);
+  position:absolute;top:16px;left:50%;transform:translateX(-50%);
   display:flex;gap:8px;z-index:5;align-items:center;
 }
 .dot-nav .dot{
-  width:8px;height:8px;border-radius:50%;
+  width:12px;height:12px;border-radius:50%;
   background:rgba(255,255,255,.3);transition:all .3s;
 }
 .dot-nav .dot.active{background:var(--accent);transform:scale(1.3)}
-.dot-nav .arrow{font-size:.7rem;color:rgba(255,255,255,.4);cursor:pointer}
+.dot-nav .arrow{font-size:1rem;color:rgba(255,255,255,.4);cursor:pointer}
 
 /* Navigation hints */
 .nav-hint{
   position:absolute;bottom:12px;left:50%;transform:translateX(-50%);
-  font-size:.75rem;color:var(--accent);font-weight:600;
+  font-size:1rem;color:var(--accent);font-weight:700;
   letter-spacing:1px;z-index:10;
   animation:hintPulse 2s ease-in-out infinite;
   white-space:nowrap;
@@ -156,7 +156,7 @@ small{font-size:.72rem;line-height:1.6}
 }
 .cycle-item{
   background:rgba(43,110,79,.3);border:1px solid var(--main);
-  border-radius:10px;padding:10px 14px;font-size:.78rem;font-weight:700;
+  border-radius:10px;padding:10px 14px;font-size:.88rem;font-weight:700;
   text-align:center;flex:0 0 44%;
 }
 .cycle-arrow{
@@ -184,7 +184,7 @@ small{font-size:.72rem;line-height:1.6}
   margin-bottom:8px;border-left:3px solid var(--accent);
 }
 .testimonial .meta{font-size:.65rem;color:var(--accent);margin-bottom:4px;font-weight:700}
-.testimonial .quote{font-size:.72rem;line-height:1.6;color:rgba(255,255,255,.85)}
+.testimonial .quote{font-size:.92rem;line-height:1.6;color:rgba(255,255,255,.85)}
 
 /* Big number */
 .big-number{font-size:4.5rem;font-weight:900;color:var(--accent);line-height:1}
@@ -199,14 +199,14 @@ small{font-size:.72rem;line-height:1.6}
 .qa-q .q-label{color:var(--accent);font-weight:900;flex-shrink:0}
 .qa-q .toggle{display:none}
 .qa-a{
-  font-size:.73rem;line-height:1.7;color:rgba(255,255,255,.7);
+  font-size:.9rem;line-height:1.7;color:rgba(255,255,255,.7);
   padding:0 0 10px 26px;
 }
 
 /* Offer badge */
 .badge{
   display:inline-block;background:var(--warn);color:#fff;
-  font-size:.7rem;font-weight:900;padding:4px 16px;border-radius:20px;
+  font-size:.8rem;font-weight:900;padding:4px 16px;border-radius:20px;
   margin-bottom:12px;
 }
 .strikethrough{text-decoration:line-through;color:rgba(255,255,255,.4)}
@@ -220,7 +220,7 @@ small{font-size:.72rem;line-height:1.6}
   background:var(--accent);color:#1a1a1a;font-weight:900;
   display:flex;align-items:center;justify-content:center;font-size:.85rem;
 }
-.reason-text{font-size:.82rem;line-height:1.6}
+.reason-text{font-size:.9rem;line-height:1.6}
 
 /* Job card */
 .job-card{
@@ -256,9 +256,7 @@ small{font-size:.72rem;line-height:1.6}
   <div class="inner" style="text-align:center">
     <div class="fade-in"><span class="section-label">介護施設の経営者・管理者様へ</span></div>
     <h2 class="fade-in" style="font-size:1.45rem;margin-top:8px">介護スタッフが<br>「辞めたい」と思う前に<br>打てる、<span style="color:var(--accent)">新習慣。</span></h2>
-    <p class="fade-in" style="font-size:.82rem;color:rgba(255,255,255,.8);margin-top:10px">顧客満足度<strong style="color:var(--accent)">96%</strong>の国家資格保有者が施設に訪問し、<br>腰痛・肩こりを溜まる前にケア。</p>
-    <a href="javascript:void(0)" class="cta-btn fade-in" onclick="goToSection(allSections.length-1)">初回無料で体験してみる</a>
-    <p class="cta-sub fade-in">先着3社限定・完全返金保証付き</p>
+    <p class="fade-in" style="font-size:.9rem;color:rgba(255,255,255,.8);margin-top:10px">顧客満足度<strong style="color:var(--accent)">96%</strong>の国家資格保有者が施設に訪問し、<br>腰痛・肩こりを溜まる前にケア。</p>
   </div>
   <!-- nav-hint added dynamically by JS -->
 </section>
@@ -289,7 +287,7 @@ small{font-size:.72rem;line-height:1.6}
           <div class="check-item"><span class="icon">&#9745;</span><span>体の不調を放置したスタッフが、ある日突然メンタルを崩して休職に入ってしまった</span></div>
           <div class="check-item"><span class="icon">&#9745;</span><span>「腰が限界です」とドクターストップがかかり、戦力だったスタッフが現場を離れた</span></div>
         </div>
-        <p class="fade-in" style="text-align:center;color:var(--accent);font-size:.75rem;font-weight:700;margin-top:12px">→ 横にスワイプ</p>
+        <p class="fade-in" style="text-align:center;color:var(--accent);font-size:1.1rem;font-weight:700;margin-top:12px">→ 横にスワイプ</p>
       </div>
     </div>
     <!-- Page 2 -->
@@ -339,8 +337,8 @@ small{font-size:.72rem;line-height:1.6}
   <div class="bg-overlay" style="background:rgba(43,110,79,0.8)"></div>
   <div class="inner" style="text-align:center">
     <div class="fade-in" style="font-size:2rem;font-weight:900;color:var(--accent);letter-spacing:.05em;margin-bottom:6px">オフィ楽</div>
-    <p class="fade-in" style="font-size:.83rem;color:rgba(255,255,255,.85);margin-bottom:18px">顧客満足度<strong style="color:var(--accent)">96%</strong>。厚生労働大臣認可の国家資格保有者が施設に直接訪問。介護スタッフの心身を整える出張整体「オフィ楽」。</p>
-    <p class="fade-in" style="font-size:.82rem;color:rgba(255,255,255,.7)">畳3畳分のスペースだけ。備品の準備は一切不要。施設長や管理者の手間を増やすことなく、すぐに導入できます。</p>
+    <p class="fade-in" style="font-size:.9rem;color:rgba(255,255,255,.85);margin-bottom:18px">顧客満足度<strong style="color:var(--accent)">96%</strong>。厚生労働大臣認可の国家資格保有者が施設に直接訪問。介護スタッフの心身を整える出張整体「オフィ楽」。</p>
+    <p class="fade-in" style="font-size:.9rem;color:rgba(255,255,255,.7)">畳3畳分のスペースだけ。備品の準備は一切不要。施設長や管理者の手間を増やすことなく、すぐに導入できます。</p>
   </div>
 </section>
 
@@ -352,18 +350,18 @@ small{font-size:.72rem;line-height:1.6}
     <h2 class="fade-in" style="text-align:center;font-size:1.15rem;margin-bottom:16px"><span style="color:var(--accent)">3つの特徴</span></h2>
     <div class="card fade-in">
       <div class="card-number">1</div>
-      <h3 style="font-size:.92rem">施術前カウンセリング</h3>
-      <p style="font-size:.78rem;color:rgba(255,255,255,.7);margin:0">一人ひとりの不調を把握</p>
+      <h3 style="font-size:1.05rem">施術前カウンセリング</h3>
+      <p style="font-size:.88rem;color:rgba(255,255,255,.7);margin:0">一人ひとりの不調を丁寧にヒアリング。腰・肩・首など、介護業務で負担がかかる部位を重点的に把握します</p>
     </div>
     <div class="card fade-in">
       <div class="card-number">2</div>
-      <h3 style="font-size:.92rem">国家資格者によるプロの施術</h3>
-      <p style="font-size:.78rem;color:rgba(255,255,255,.7);margin:0">1人20分で腰痛・肩こりをケア</p>
+      <h3 style="font-size:1.05rem">国家資格者によるプロの施術</h3>
+      <p style="font-size:.88rem;color:rgba(255,255,255,.7);margin:0">厚生労働大臣認可の国家資格保有者が1人20分で施術。解剖学・生理学に基づいた安全なケアを提供します</p>
     </div>
     <div class="card fade-in">
       <div class="card-number">3</div>
-      <h3 style="font-size:.92rem">施術後セルフケア指導</h3>
-      <p style="font-size:.78rem;color:rgba(255,255,255,.7);margin:0">日常からスタッフ自身が体を守れる習慣をつくります</p>
+      <h3 style="font-size:1.05rem">施術後セルフケア指導</h3>
+      <p style="font-size:.88rem;color:rgba(255,255,255,.7);margin:0">施術の日だけでなく、日常からスタッフ自身が体を守れる習慣をつくります。自宅でできるストレッチも指導</p>
     </div>
   </div>
 </section>
@@ -383,7 +381,7 @@ small{font-size:.72rem;line-height:1.6}
       <div style="color:var(--accent);font-size:1.4rem;line-height:1.2">▼</div>
       <div style="background:var(--main);border:2px solid var(--accent);border-radius:12px;padding:12px 24px;width:100%;text-align:center;font-weight:900;font-size:.95rem;color:var(--accent)">現場が安定する</div>
     </div>
-    <p class="fade-in" style="font-size:.82rem;color:rgba(255,255,255,.8);margin-bottom:10px">オフィ楽は、スタッフのケアを通じて、施設の経営基盤を守る福利厚生サービスです。</p>
+    <p class="fade-in" style="font-size:.9rem;color:rgba(255,255,255,.8);margin-bottom:10px">オフィ楽は、スタッフのケアを通じて、施設の経営基盤を守る福利厚生サービスです。</p>
   </div>
 </section>
 
@@ -403,7 +401,7 @@ small{font-size:.72rem;line-height:1.6}
           <div class="check-item"><span class="icon">&#9745;</span><span>「腰がいつまで持つかわからない」という将来不安が和らぎ、スタッフが安心して介護の仕事を続けられる</span></div>
           <div class="check-item"><span class="icon">&#9745;</span><span>「体がつらいから辞めたい」という退職の引き金がなくなり、離職率が低下する</span></div>
         </div>
-        <p class="fade-in" style="text-align:center;color:var(--accent);font-size:.75rem;font-weight:700;margin-top:10px">→ 横にスワイプ</p>
+        <p class="fade-in" style="text-align:center;color:var(--accent);font-size:1.1rem;font-weight:700;margin-top:10px">→ 横にスワイプ</p>
       </div>
     </div>
     <!-- Page 2 -->
@@ -434,32 +432,18 @@ small{font-size:.72rem;line-height:1.6}
   <div class="inner" style="text-align:center">
     <h2 class="fade-in" style="font-size:1.1rem;margin-bottom:18px">コスト比較</h2>
     <div class="cost-box bad fade-in">
-      <p style="font-size:.75rem;margin-bottom:4px;color:rgba(255,255,255,.6)">スタッフ1人の離職コスト</p>
+      <p style="font-size:.9rem;margin-bottom:4px;color:rgba(255,255,255,.6)">スタッフ1人の離職コスト</p>
       <div class="cost-amount" style="color:var(--warn)">約50〜100万円</div>
     </div>
     <div class="vs fade-in">VS</div>
     <div class="cost-box good fade-in">
-      <p style="font-size:.75rem;margin-bottom:4px;color:rgba(255,255,255,.6)">オフィ楽（実質負担）</p>
+      <p style="font-size:.9rem;margin-bottom:4px;color:rgba(255,255,255,.6)">オフィ楽（実質負担）</p>
       <div class="cost-amount" style="color:var(--accent)">月30,500円〜</div>
     </div>
     <p class="fade-in" style="font-size:.88rem;font-weight:700;margin-top:14px;color:var(--accent)">1人の離職を防ぐだけで<br>年間の費用を回収できます</p>
   </div>
 </section>
 
-<!-- ===== SECTION 10: RECRUITING ===== -->
-<section class="snap-section" id="s10" style="background:var(--bg-dark)">
-  <div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1573497620053-ea5300f94f21?w=800&q=80')"></div>
-  <div class="bg-overlay" style="background:rgba(43,110,79,0.82)"></div>
-  <div class="inner" style="text-align:center">
-    <h2 class="fade-in" style="font-size:1.1rem;margin-bottom:18px">採用力UP</h2>
-    <div class="job-card fade-in">
-      <h3>求人票</h3>
-      <p style="font-size:.82rem;color:#555;margin-bottom:8px">某介護施設 ／ 正社員</p>
-      <div class="job-highlight">福利厚生：出張整体あり（月1回）</div>
-    </div>
-    <p class="fade-in" style="font-size:1rem;font-weight:900;margin-top:16px">この一行が、<br><span style="color:var(--accent)">採用の差別化ポイント</span>になる。</p>
-  </div>
-</section>
 
 <!-- ===== SECTION 11: TESTIMONIALS ===== -->
 <section class="snap-section" id="s11" style="background:var(--bg-dark)">
@@ -467,6 +451,7 @@ small{font-size:.72rem;line-height:1.6}
   <div class="bg-overlay" style="background:rgba(26,26,46,0.85)"></div>
   <div class="inner">
     <h2 class="fade-in" style="text-align:center;font-size:1.1rem;margin-bottom:14px">導入施設の声</h2>
+    <p class="fade-in" style="font-size:.85rem;color:rgba(255,255,255,.7);margin-bottom:16px;text-align:center">実際に「オフィ楽」を導入した施設のスタッフから、こんな声が届いています。</p>
     <div class="testimonial fade-in">
       <div class="meta">CASE 1 ｜ 特養・40代女性</div>
       <div class="quote">「腰が痛いのを我慢して働いていたスタッフが、施術後に『体が軽くなった！』と笑顔で戻ってきたのを見て、導入して本当に良かったと思いました。休職する前に手を打てるのが一番のメリットです。」</div>
@@ -479,17 +464,11 @@ small{font-size:.72rem;line-height:1.6}
       <div class="meta">CASE 3 ｜ デイサービス・50代女性</div>
       <div class="quote">「スタッフから『この施設は自分たちのことを考えてくれている』と言われたとき、導入して良かったと実感しました。離職率が下がり、利用者へのサービスの質も目に見えて向上しています。」</div>
     </div>
-  </div>
-</section>
-
-<!-- ===== SECTION 12: SATISFACTION + CTA ===== -->
-<section class="snap-section" id="s12">
-  <div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&q=80')"></div>
-  <div class="bg-overlay" style="background:rgba(43,110,79,0.8)"></div>
-  <div class="inner" style="text-align:center">
-    <p class="fade-in" style="font-size:.8rem;color:rgba(255,255,255,.6);margin-bottom:4px">顧客満足度</p>
-    <div class="big-number fade-in">96<span style="font-size:2rem">%</span></div>
-    <p class="fade-in" style="font-size:.85rem;margin-top:12px;color:rgba(255,255,255,.8)">ご利用いただいたお客様の<br><strong style="color:var(--accent)">96%</strong>が「また受けたい」と回答</p>
+    <div class="fade-in" style="text-align:center;margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.15)">
+      <p style="font-size:.8rem;color:rgba(255,255,255,.6)">顧客満足度</p>
+      <p style="font-size:2.5rem;font-weight:900;color:var(--accent);margin:4px 0">96<span style="font-size:1.2rem">%</span></p>
+      <p style="font-size:.88rem;color:rgba(255,255,255,.7)">ご利用いただいたお客様の96%が「また受けたい」と回答</p>
+    </div>
   </div>
 </section>
 
@@ -524,7 +503,7 @@ small{font-size:.72rem;line-height:1.6}
             <div class="qa-a">ローテーション制や希望制＋抽選など施設の状況に合わせた運用ルールを提案。「福利厚生の一環」として公式アナウンスで不公平感も解消。</div>
           </div>
         </div>
-        <p class="fade-in" style="text-align:center;color:var(--accent);font-size:.75rem;font-weight:700;margin-top:8px">→ Q6〜Q10 を見る</p>
+        <p class="fade-in" style="text-align:center;color:var(--accent);font-size:1.1rem;font-weight:700;margin-top:8px">→ Q6〜Q10 を見る</p>
       </div>
     </div>
     <!-- Page 2: Q6-Q10 -->
@@ -568,7 +547,7 @@ small{font-size:.72rem;line-height:1.6}
   <div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=80')"></div>
   <div class="bg-overlay" style="background:rgba(26,26,46,0.8)"></div>
   <div class="inner" style="text-align:center">
-    <div class="fade-in" style="font-size:.75rem;letter-spacing:4px;color:var(--accent);margin-bottom:8px;font-weight:700">SPECIAL OFFER</div>
+    <div class="fade-in" style="font-size:.9rem;letter-spacing:4px;color:var(--accent);margin-bottom:8px;font-weight:700">SPECIAL OFFER</div>
     <div class="badge fade-in">先着3社限定</div>
     <h2 class="fade-in" style="font-size:1.3rem;margin-bottom:14px">初回訪問<span style="color:var(--accent)">完全無料</span>体験</h2>
     <div class="fade-in" style="margin-bottom:16px">
@@ -576,7 +555,7 @@ small{font-size:.72rem;line-height:1.6}
       <span style="font-size:2.5rem;font-weight:900;color:var(--accent);margin-left:10px">0<span style="font-size:1.2rem">円</span></span>
     </div>
     <p class="fade-in" style="font-size:.85rem;font-weight:700;color:var(--accent)">完全返金保証付き</p>
-    <p class="fade-in" style="font-size:.75rem;color:rgba(255,255,255,.6);margin-top:8px">万が一ご満足いただけなかった場合、費用は一切いただきません</p>
+    <p class="fade-in" style="font-size:.88rem;color:rgba(255,255,255,.6);margin-top:8px">万が一ご満足いただけなかった場合、費用は一切いただきません</p>
   </div>
 </section>
 
@@ -883,9 +862,11 @@ function updateNavHints() {
 
     if (hInfo && !hInfo.isLastPage) {
       h.textContent = '→ 横にスワイプ';
+      h.style.fontSize = '1.2rem';
       h.style.display = 'block';
     } else if (!isLast) {
       h.textContent = '↓ 下にスワイプ';
+      h.style.fontSize = '1rem';
       h.style.display = 'block';
     } else {
       h.style.display = 'none';
