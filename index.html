@@ -763,20 +763,17 @@ document.addEventListener('wheel', (e) => {
   // Vertical swipe
   if (absY > 5) {
     if (e.deltaY > 0) {
-      // Scrolling down
+      // Scrolling down - block if horizontal pages remain
       if (hInfo && !hInfo.isLastPage) {
-        // Still have horizontal pages to show - scroll right first
-        scrollHSwipe(hInfo.container, 'right');
-      } else {
-        goToSection(currentSection + 1);
+        return; // Lock: must swipe right first
       }
+      goToSection(currentSection + 1);
     } else {
-      // Scrolling up
+      // Scrolling up - block if not on first horizontal page
       if (hInfo && !hInfo.isFirstPage) {
-        scrollHSwipe(hInfo.container, 'left');
-      } else {
-        goToSection(currentSection - 1);
+        return; // Lock: must swipe left first
       }
+      goToSection(currentSection - 1);
     }
   }
 }, { passive: false });
@@ -792,18 +789,12 @@ document.addEventListener('keydown', (e) => {
     e.preventDefault(); scrollHSwipe(hInfo.container, 'left');
   } else if (e.key === 'ArrowDown' || e.key === 'PageDown') {
     e.preventDefault();
-    if (hInfo && !hInfo.isLastPage) {
-      scrollHSwipe(hInfo.container, 'right');
-    } else {
-      goToSection(currentSection + 1);
-    }
+    if (hInfo && !hInfo.isLastPage) return; // Lock
+    goToSection(currentSection + 1);
   } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
     e.preventDefault();
-    if (hInfo && !hInfo.isFirstPage) {
-      scrollHSwipe(hInfo.container, 'left');
-    } else {
-      goToSection(currentSection - 1);
-    }
+    if (hInfo && !hInfo.isFirstPage) return; // Lock
+    goToSection(currentSection - 1);
   }
 });
 
@@ -831,19 +822,13 @@ document.addEventListener('touchend', (e) => {
       }
     }
   } else if (absDy > 40) {
-    // Vertical swipe
+    // Vertical swipe - block if horizontal pages remain
     if (dy > 0) {
-      if (hInfo && !hInfo.isLastPage) {
-        scrollHSwipe(hInfo.container, 'right');
-      } else {
-        goToSection(currentSection + 1);
-      }
+      if (hInfo && !hInfo.isLastPage) return; // Lock
+      goToSection(currentSection + 1);
     } else {
-      if (hInfo && !hInfo.isFirstPage) {
-        scrollHSwipe(hInfo.container, 'left');
-      } else {
-        goToSection(currentSection - 1);
-      }
+      if (hInfo && !hInfo.isFirstPage) return; // Lock
+      goToSection(currentSection - 1);
     }
   }
 }, { passive: true });
